@@ -224,16 +224,19 @@ switch:
     turn_off_action:
       - switch.turn_off: realy0
       - switch.turn_off: LOGO_light
-      - lambda: |-
-          if (id(realy1).state) {
-            id(switch1).turn_off();
-          }
-          if (id(realy2).state) {
-            id(switch2).turn_off();
-          }
-          if (id(realy3).state) {
-            id(switch3).turn_off();
-          }
+      - switch.turn_off: realy1
+      - switch.turn_off: realy2
+      - switch.turn_off: realy3
+#      - lambda: |-
+#          if (id(realy1).state) {
+#            id(switch1).turn_off();
+#          }
+#          if (id(realy2).state) {
+#            id(switch2).turn_off();
+#          }
+#          if (id(realy3).state) {
+#            id(switch3).turn_off();
+#          }
   - platform: template
     #虚拟开关1(显示为一个开关)
     name: "${device_name} switch1"
@@ -280,9 +283,3 @@ switch:
     id: LOGO_light
     internal: false
     inverted: true
-#    restore_mode: ALWAYS_ON
-  - platform: restart
-    name: "${device_name} restart"
-    id: device_restart
-
-
